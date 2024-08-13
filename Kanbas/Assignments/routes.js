@@ -20,12 +20,10 @@ export default function AssignmentsRoutes(app) {
     res.json(Assignment);
   });
 
-
-
     //SELECT a ASSIGMENT
     app.get("/api/Assignments/:aid", (req, res) => {
         const { aid} = req.params;
-       // console.log("inside node",  aid)
+      
         const Assignment = db.assignments.filter((m) => m._id === aid);
         res.json(Assignment);
       });
