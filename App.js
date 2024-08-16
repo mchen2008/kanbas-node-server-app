@@ -13,33 +13,16 @@ import UserRoutes from "./Users/routes.js";
 import "dotenv/config";
 const CONNECTION_STRING = process.env.MONGO_CONNECTION_STRING || "mongodb://127.0.0.1:27017/kanbas"
 
-console.log("connection_string:", CONNECTION_STRING)
-mongoose.connect(CONNECTION_STRING);
-// import {MongoClient, ServerApiVersion} from "mongodb";
+//const CONNECTION_STRING = "mongodb+srv://alice321321:manchen@kanbas.aa7x4.mongodb.net/Kanbas?retryWrites=true&w=majority&appName=Kanbas"
 
-//const { MongoClient, ServerApiVersion } = require('mongodb');
-// const uri = "mongodb+srv://alice321321:manchen@kanbas.aa7x4.mongodb.net/Kanbas?retryWrites=true&w=majority&appName=Kanbas";
-// // Create a MongoClient with a MongoClientOptions object to set the Stable API version
-// const client = new MongoClient(uri, {
-//   serverApi: {
-//     version: ServerApiVersion.v1,
-//     strict: true,
-//     deprecationErrors: true,
-//   }
-// });
-// async function run() {
-//   try {
-//     // Connect the client to the server	(optional starting in v4.7)
-//     await client.connect();
-//     // Send a ping to confirm a successful connection
-//     await client.db("admin").command({ ping: 1 });
-//     console.log("Pinged your deployment. You successfully connected to MongoDB!");
-//   } finally {
-//     // Ensures that the client will close when you finish/error
-//     await client.close();
-//   }
-// }
-// run().catch(console.dir);
+try {
+    await mongoose.connect(CONNECTION_STRING);
+    console.log("db connected", CONNECTION_STRING)
+    
+  }
+  catch (error) {
+    console.error(error);
+  }
 
 
 const app = express()
@@ -56,6 +39,7 @@ const sessionOptions = {
     resave: false,
     saveUninitialized: false,
 };
+
 if (process.env.NODE_ENV !== "development") {
     sessionOptions.proxy = true;
     sessionOptions.cookie = {
