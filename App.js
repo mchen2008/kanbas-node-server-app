@@ -11,9 +11,9 @@ import mongoose from "mongoose";
 import UserRoutes from "./Users/routes.js";
 
 import "dotenv/config";
-//const CONNECTION_STRING = process.env.MONGO_CONNECTION_STRING || "mongodb://127.0.0.1:27017/kanbas"
+const CONNECTION_STRING = process.env.MONGO_CONNECTION_STRING || "mongodb://127.0.0.1:27017/kanbas"
 
-const CONNECTION_STRING = "mongodb+srv://alice321321:manchen@kanbas.aa7x4.mongodb.net/Kanbas?retryWrites=true&w=majority&appName=Kanbas"
+//const CONNECTION_STRING = "mongodb+srv://alice321321:manchen@kanbas.aa7x4.mongodb.net/Kanbas?retryWrites=true&w=majority&appName=Kanbas"
 
 try {
     await mongoose.connect(CONNECTION_STRING);
